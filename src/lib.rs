@@ -10,6 +10,9 @@ extern crate libc;
 
 include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
 
+/**
+* Function used to create MQCD structure with default values
+*/
 fn mq_cd_default() -> MQCD {
     MQCD {
         ChannelName: [0; 20],
