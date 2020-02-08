@@ -1,5 +1,5 @@
 [package]
-name = "IbmMqRust"
+name = "ibm-mq-snd"
 version = "0.1.0"
 authors = ["anatoly <anatolse@gmail.com>"]
 edition = "2018"
