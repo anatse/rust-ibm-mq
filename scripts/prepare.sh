@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export DYLD_LIBRARY_PATH=$HOME/MQ/9.1.4.0-IBM-MQ-Toolkit-MacX64/lib64
+export DYLD_LIBRARY_PATH=$HOME/CLionProjects/IBM-MQ-Toolkit-Mac-x64-9.1.3.0/lib64
 
 cargo install bindgen
 

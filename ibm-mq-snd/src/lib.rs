@@ -1,135 +1,35 @@
 #![allow(non_upper_case_globals)]
 #![allow(non_camel_case_types)]
 #![allow(non_snake_case)]
+#![allow(dead_code)]
 
-use std::ptr::{null_mut};
-use std::ffi::{CString, CStr};
-use ::std::os::raw::c_char;
-
+mod mqconfig;
 extern crate libc;
 
-include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
+use std::ptr::{null_mut};
+use std::ffi::{CStr};
+use std::sync::{Arc, Mutex};
+use std::default::Default;
+use ::std::os::raw::c_char;
+use mqconfig::*;
 
-impl MQCD {
-    /**
-    * Function used to create MQCD structure with default values
-    */
-    fn default() -> MQCD {
-        MQCD {
-            ChannelName: [0; 20],
-            Version: MQCD_CURRENT_VERSION as i32,
-            ChannelType: MQCHT_SENDER as i32,
-            TransportType: MQXPT_LU62 as i32,
-            Desc: [0; 64],
-            QMgrName: [0; 48],
-            XmitQName: [0; 48],
-            ShortConnectionName: [0; 20],
-            MCAName: [0; 20],
-            ModeName: [0; 8],
-            TpName: [0; 64],
-            BatchSize: 50,
-            DiscInterval: 6000,
-            ShortRetryCount: 10,
-            ShortRetryInterval: 60,
-            LongRetryCount: 999999999,
-            LongRetryInterval: 1200,
-            SecurityExit: [0; 128],
-            MsgExit: [0; 128],
-            SendExit: [0; 128],
-            ReceiveExit: [0; 128],
-            SeqNumberWrap: 999999999,
-            MaxMsgLength: 4194304,
-            PutAuthority: MQPA_DEFAULT as i32,
-            DataConversion: MQCDC_NO_SENDER_CONVERSION as i32,
-            SecurityUserData: [0; 32],
-            MsgUserData: [0; 32],
-            SendUserData: [0; 32],
-            ReceiveUserData: [0; 32],
-            UserIdentifier: [0; 12],
-            Password: [0; 12],
-            MCAUserIdentifier: [0; 12],
-            MCAType: MQMCAT_PROCESS as i32,
-            ConnectionName: [0; 264],
-            RemoteUserIdentifier: [0; 12],
-            RemotePassword: [0; 12],
-            MsgRetryExit: [0; 128],
-            MsgRetryUserData: [0; 32],
-            MsgRetryCount: 10,
-            MsgRetryInterval: 1000,
-            HeartbeatInterval: 300,
-            BatchInterval: 0,
-            NonPersistentMsgSpeed: MQNPMS_FAST as i32,
-            StrucLength: MQCD_CURRENT_LENGTH as i32,
-            ExitNameLength: MQ_EXIT_NAME_LENGTH as i32,
-            ExitDataLength: MQ_EXIT_DATA_LENGTH as i32,
-            MsgExitsDefined: 0,
-            SendExitsDefined: 0,
-            ReceiveExitsDefined: 0,
-            MsgExitPtr: null_mut(),
-            MsgUserDataPtr: null_mut(),
-            SendExitPtr: null_mut(),
-            SendUserDataPtr: null_mut(),
-            ReceiveExitPtr: null_mut(),
-            ReceiveUserDataPtr: null_mut(),
-            ClusterPtr: null_mut(),
-            ClustersDefined: 0,
-            NetworkPriority: 0,
-            LongMCAUserIdLength: 0,
-            LongRemoteUserIdLength: 0,
-            LongMCAUserIdPtr: null_mut(),
-            LongRemoteUserIdPtr: null_mut(),
-            MCASecurityId: [0; 40],
-            RemoteSecurityId: [0; 40],
-            SSLCipherSpec: [0; 32],
-            SSLPeerNamePtr: null_mut(),
-            SSLPeerNameLength: 0,
-            SSLClientAuth: MQSCA_REQUIRED as i32,
-            KeepAliveInterval: MQKAI_AUTO as i32,
-            LocalAddress: [0; 48],
-            BatchHeartbeat: 0,
-            HdrCompList: [
-                MQCOMPRESS_NONE as i32,
-                MQCOMPRESS_NOT_AVAILABLE as i32,
-            ],
-            MsgCompList: [
-                MQCOMPRESS_NONE as i32,
-                MQCOMPRESS_NOT_AVAILABLE as i32,
-                MQCOMPRESS_NOT_AVAILABLE as i32,
-                MQCOMPRESS_NOT_AVAILABLE as i32,
-                MQCOMPRESS_NOT_AVAILABLE as i32,
-                MQCOMPRESS_NOT_AVAILABLE as i32,
-                MQCOMPRESS_NOT_AVAILABLE as i32,
-                MQCOMPRESS_NOT_AVAILABLE as i32,
-                MQCOMPRESS_NOT_AVAILABLE as i32,
-                MQCOMPRESS_NOT_AVAILABLE as i32,
-                MQCOMPRESS_NOT_AVAILABLE as i32,
-                MQCOMPRESS_NOT_AVAILABLE as i32,
-                MQCOMPRESS_NOT_AVAILABLE as i32,
-                MQCOMPRESS_NOT_AVAILABLE as i32,
-                MQCOMPRESS_NOT_AVAILABLE as i32,
-                MQCOMPRESS_NOT_AVAILABLE as i32,
-            ],
-            CLWLChannelRank: 0,
-            CLWLChannelPriority: 0,
-            CLWLChannelWeight: 50,
-            ChannelMonitoring: MQMON_OFF as i32,
-            ChannelStatistics: MQMON_OFF as i32,
-            SharingConversations: 10,
-            PropertyControl: MQPROP_COMPATIBILITY as i32,
-            MaxInstances: 999999999,
-            MaxInstancesPerClient: 999999999,
-            ClientChannelWeight: 0,
-            ConnectionAffinity: MQCAFTY_PREFERRED as i32,
-            BatchDataLimit: 5000,
-            UseDLQ: MQUSEDLQ_YES as i32,
-            DefReconnect: MQRCN_NO as i32,
-            CertificateLabel: [0; 64],
-            SPLProtection: MQSPL_PASSTHRU as i32,
-        }
+
+#[derive(Default, Clone)]
+pub struct MqWriter {
+
+    pub con: MQHCONN,
+    pub obj: MQHOBJ,
+}
+
+impl MqWriter {
+    pub fn connect(&self, config: &MqConfig) -> MQHCONN {
+//        self.con.
+
+        0
     }
 }
 
-pub fn send_message(message: String) {
+pub fn send_message(_message: String) {
     let mut user_id = CStr::from_bytes_with_nul(b"admin\0")
         .unwrap().as_ptr();
 
