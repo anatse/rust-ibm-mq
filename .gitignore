@@ -4,3 +4,4 @@ Cargo.lock
 /IbmMqRust.iml
 /kafka-snd/kafka-snd.iml
 /ibm-mq-snd/ibm-mq-snd.iml
+/.idea/
