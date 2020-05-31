@@ -1,3 +1,5 @@
+#![allow(unused_imports)]
+
 use std::convert::Infallible;
 use std::net::SocketAddr;
 use hyper::{Body, Request, Response, Server};

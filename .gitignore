@@ -4,3 +4,12 @@ Cargo.lock
 /IbmMqRust.iml
 /kafka-snd/kafka-snd.iml
 /ibm-mq-snd/ibm-mq-snd.iml
+/rs-kafka-etl.iml
+/audit-proxy/audit-proxy.iml
+.idea/.gitignore
+.idea/codeStyles/
+.idea/misc.xml
+.idea/modules.xml
+.idea/runConfigurations/
+.idea/sbt.xml
+.idea/vcs.xml

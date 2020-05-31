@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use serde::Deserialize;
 use std::collections::HashMap;
 use hocon::{HoconLoader, Hocon};
@@ -64,7 +66,7 @@ impl ConfigLoader {
             .resolve().expect("Error resolve config");
 
         ConfigLoader {
-            hocon: hocon,
+            hocon,
             app: doc.app,
         }
     }
@@ -78,7 +80,7 @@ impl ConfigLoader {
             .resolve().expect("Error resolve config");
 
         ConfigLoader {
-            hocon: hocon,
+            hocon,
             app: doc.app,
         }
     }

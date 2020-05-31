@@ -5,7 +5,7 @@ use std::path::PathBuf;
 
 fn main() {
     let library_path = option_env!("DYLD_LIBRARY_PATH")
-        .unwrap_or("/Users/anatolysementsov/MQ/9.1.4.0-IBM-MQ-Toolkit-MacX64/lib64");
+        .unwrap_or("/Users/anatolysementsov/projects/9.1.5.0-IBM-MQ-Toolkit-MacX64/lib64/");
 
     println!("cargo:rustc-flags=-l mqic_r -L {}", library_path);
     // Tell cargo to tell rustc to link the system bzip2
