@@ -1,5 +1,5 @@
 # REST модуль для Аудита
-Модуль выполняет отправку сообщений аудита в Kafka. Модуль реализован на языке Rust.
+Модуль выполняет перекладку сообщений из MQ в Kafka. Модуль реализован на языке Rust.
  - [Rust book (RUS)](https://doc.rust-lang.ru/book)
  - [Rustonomicon](https://doc.rust-lang.org/nomicon/)
  
@@ -18,7 +18,7 @@ docker run -p 9443:9443 -p 1414:1414 \
 ```
 
 ## Текущая конфигурация
- - [application.conf](application.conf)
+ - [application.conf](config/application.conf)
 
 ## Запуск
 ### Подготовка
@@ -83,8 +83,8 @@ Problem solved.
 #### Сборка и вызгурзка docker image
 [build-docker.sh](release/build-with-docker.sh)
 
- - Исполняемый файл [mq2kafka](release/linux_x64/mq2kafka)
- - Выгруженный образ будет находиться здесь [audit_mq2kafka.tar.gz](release/docker-image/audit_mq2kafka.tar.gz)
+ - Исполняемый файл [linux_x64](release/linux_x64/)
+ - Выгруженный образ будет находиться здесь [docker_image](release/docker-image/)
 
 #### Удалить все докер контейнеры
 ```shell script
