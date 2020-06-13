@@ -83,8 +83,8 @@ Problem solved.
 #### Сборка и вызгурзка docker image
 [build-docker.sh](release/build-with-docker.sh)
 
- - Исполняемый файл [linux_x64](release/linux_x64/)
- - Выгруженный образ будет находиться здесь [docker_image](release/docker-image/)
+ - Исполняемый файл [linux_x64](release/linux_x64)
+ - Выгруженный образ будет находиться здесь [docker_image](release/docker-image)
 
 #### Удалить все докер контейнеры
 ```shell script
