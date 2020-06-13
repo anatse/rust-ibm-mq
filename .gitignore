@@ -13,3 +13,5 @@ Cargo.lock
 .idea/runConfigurations/
 .idea/sbt.xml
 .idea/vcs.xml
+/.idea/
+/release/linux_x64/mq2kafka

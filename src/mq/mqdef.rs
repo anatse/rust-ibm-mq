@@ -203,7 +203,7 @@ impl MQMD {
     pub fn default() -> MQMD {
         MQMD {
             StrucId: ['M' as i8,'D' as i8, ' ' as i8, ' ' as i8],
-            Version: MQMD_CURRENT_VERSION as i32,
+            Version: MQMD_VERSION_1 as i32,
             Report: MQRO_NONE as i32,
             MsgType: MQMT_DATAGRAM as i32,
             Expiry: MQEI_UNLIMITED as i32,
@@ -394,6 +394,59 @@ impl MQPD {
             Support: MQPD_SUPPORT_OPTIONAL as i32,
             Context: MQPD_NO_CONTEXT as i32,
             CopyOptions: MQCOPY_DEFAULT as i32,
+        }
+    }
+}
+
+impl MQSCO {
+    pub fn default() -> MQSCO {
+        MQSCO {
+            StrucId: ['S' as i8, 'C' as i8, 'O' as i8, ' ' as i8],
+            Version: MQSCO_VERSION_1 as i32,
+            KeyRepository: [0; 256],
+            CryptoHardware: [0; 256],
+            AuthInfoRecCount: 0,
+            AuthInfoRecOffset: 0,
+            AuthInfoRecPtr: null_mut(),
+            KeyResetCount: MQSCO_RESET_COUNT_DEFAULT as i32,
+            FipsRequired:MQSSL_FIPS_NO as i32,
+            EncryptionPolicySuiteB: [MQ_SUITE_B_NONE as i32,
+                                    MQ_SUITE_B_NOT_AVAILABLE as i32,
+                                    MQ_SUITE_B_NOT_AVAILABLE as i32,
+                                    MQ_SUITE_B_NOT_AVAILABLE as i32],
+            CertificateValPolicy: MQ_CERT_VAL_POLICY_DEFAULT as i32,
+            CertificateLabel: [0; 64],
+        }
+    }
+}
+
+impl MQAIR {
+    pub fn default() -> MQAIR {
+        MQAIR {
+            StrucId: ['A' as i8, 'I' as i8, 'R' as i8, ' ' as i8],
+            Version: MQAIR_VERSION_1 as i32,
+            AuthInfoType: MQAIT_CRL_LDAP as i32,
+            AuthInfoConnName: [0; 264],
+            LDAPUserNamePtr: null_mut(),
+            LDAPUserNameOffset: 0,
+            LDAPUserNameLength: 0,
+            LDAPPassword: [0; 32],
+            OCSPResponderURL: [0; 256]
+        }
+    }
+}
+
+impl MQRFH2 {
+    pub fn default() -> MQRFH2 {
+        MQRFH2 {
+            StrucId: ['R' as i8, 'F' as i8, 'H' as i8, ' ' as i8],
+            Version: MQRFH_VERSION_2 as i32,
+            StrucLength: MQRFH_STRUC_LENGTH_FIXED_2 as i32,
+            Encoding: MQENC_NATIVE as i32,
+            CodedCharSetId: MQCCSI_INHERIT,
+            Format: [0; 8],
+            Flags: MQRFH_NONE as i32,
+            NameValueCCSID: 1208
         }
     }
 }

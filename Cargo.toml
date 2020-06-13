@@ -1,2 +1,27 @@
-[workspace]
-members = ["ibm-mq-snd", "kafka-snd", "audit-proxy"]
+[package]
+name = "mq2kafka"
+version = "0.1.0"
+authors = ["Anatol Se"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[profile.release]
+opt-level = 3
+
+[dependencies]
+libc = "0"
+quick-xml = "*"
+log = "*"
+env_logger = "0.7"
+serde = {version = "*", features = ["derive"]}
+serde_derive = "*"
+serde_json = "*"
+hocon = "*"
+chrono = "*"
+rdkafka = { version = "*", features = ["ssl"] }
+actix-web = "*"
+actix-rt = "*"
+uuid = { version = "0.8", features = ["v4"] }
+tokio = {version = "*", features = ["rt-threaded", "macros"] }
+futures = "*"
+byteorder = "*"

@@ -1,0 +1,8 @@
+/target
+/.idea
+Cargo.lock
+mq2kafka.iml
+/.git
+.gitignore
+.dockerignore
+/release

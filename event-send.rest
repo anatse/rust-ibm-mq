@@ -1,0 +1,37 @@
+#
+POST
+http://localhost:8000/event/send
+@Content-Type: application/json
+{
+    "eventDateTime":1588788814482,
+    "uuid":"135676",
+    "subsystemCode":"AUDIT",
+    "isSuccess":false,
+    "groupCode":"GROUP",
+    "eventCode":"TEST_EVENT",
+    "sector":"LOG",
+    "channel":"WEB",
+    "requestId":"dd",
+    "auditContextUUID":"b0136a2e-c437-4a9e-8991-a90a3a7c2b6b",
+    "metaModelVersion": "1233557890",
+    "params": {
+        "userName": "Demo user",
+        "cardNumber": "*********1234",
+        "extParam1": "1234567890"
+    }
+}
+%%%
+
+# Duration: 28 ms
+# URL: http://localhost:8000/event/send
+
+# HTTP/1.1 200 OK
+
+@content-length: 29
+@content-type: application/json
+@date: Wed, 03 Jun 2020 11:02:55 GMT
+
+{
+  "success": true,
+  "body": "0/7"
+}
