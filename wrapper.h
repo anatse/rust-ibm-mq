@@ -1,0 +1,10 @@
+#include <amqsvmha.h>
+#include <cmqbc.h>
+#include <cmqc.h>
+#include <cmqcfc.h>
+#include <cmqec.h>
+#include <cmqpsc.h>
+#include <cmqstrc.h>
+#include <cmqxc.h>
+#include <cmqzc.h>
+#include <imqtype.h>

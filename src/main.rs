@@ -287,8 +287,6 @@ async fn main() -> std::io::Result<()> {
     debug!("Starting ...");
 
     let config = Arc::new(Config::load(args[1].to_owned().as_str()));
-
-    let keep_alive = config.to_owned().http.keep_alive;
     let shutdown_timeout = config.http.shutdown_timeout.to_owned();
     let bind_url = format!("{}:{}", config.http.host, config.http.port);
 

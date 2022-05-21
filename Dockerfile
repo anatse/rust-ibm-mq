@@ -27,7 +27,6 @@ RUN apt-get update && \
   libpq-dev \
   libssl-dev \
   librdkafka-dev \
-
   --no-install-recommends && \
   rm -rf /var/lib/apt/lists/*
 

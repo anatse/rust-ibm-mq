@@ -2,12 +2,8 @@
 
 use crate::model::event::AuditEvent;
 use std::vec::Vec;
-use futures::FutureExt;
-use futures::channel::oneshot;
-use rdkafka::error::KafkaError;
-use rdkafka::producer::future_producer::OwnedDeliveryResult;
 use rdkafka::producer::{FutureProducer, FutureRecord, DeliveryFuture};
-use crate::config::config::{Config, KafkaConfig};
+use crate::config::config::Config;
 use rdkafka::ClientConfig;
 use serde_json;
 use std::time::{SystemTime, UNIX_EPOCH, Duration};
