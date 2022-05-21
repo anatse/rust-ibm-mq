@@ -6,7 +6,7 @@
 ## Компоненты и библиотеки
  - Для реализации рестов используется фреймворк [Actix-Web](https://github.com/actix/actix-web)
  - Для отправки сообщений в Kafka используется библиотека [rust-rdkafka](https://github.com/fede1024/rust-rdkafka)
- - Для работы с MQ используется C клиент MQ. Для MacOS скачать библиотеки можно отсюда [MacOS Ibm MQ Toolkit](https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/messaging/mqdev/mactoolkit/9.1.5.0-IBM-MQ-Toolkit-MacX64.tar.gz) 
+ - Для работы с MQ используется C клиент MQ. Для MacOS скачать библиотеки можно отсюда [MacOS Ibm MQ Toolkit](https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/messaging/mqdev/mactoolkit/9.2.5.0-IBM-MQ-DevToolkit-MacX64.pkg), [Linux](https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/messaging/mqdev/redist/9.2.5.0-IBM-MQC-Redist-LinuxX64.tar.gz)
  - Параметры, которые в принципе можно установить при конфигурации kafka producer-а [LibRdKafka](https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md)
 
 ## Запуск MQ в докере

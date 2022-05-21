@@ -12,7 +12,6 @@ use std::sync::Arc;
 use mq::ibm_mq::IbmMqFactory;
 use crate::config::config::Config;
 
-use actix_web::http::ContentEncoding;
 use actix_web::{get, post, middleware, web, App, HttpRequest, HttpServer, Responder};
 use crate::kafka::producer::KafkaProducer;
 use crate::model::bases::{BaseResponse, ErrorMessage};
@@ -299,7 +298,7 @@ async fn main() -> std::io::Result<()> {
     let producer = Arc::new(KafkaProducer::new(config.to_owned()));
 
     // let rt = tokio::runtime::Runtime::new().unwrap();
-    let _ = actix_rt::System::run_in_tokio("test", &tokio::task::LocalSet::new());
+    // let _ = actix_rt::System::run_in_tokio("test", &tokio::task::LocalSet::new());
 
     config.mq.factories.iter().filter(move |mq| mq.enabled).for_each( |mq| {
         for _ in 0..config.mq.workers_per_factory {
@@ -332,11 +331,9 @@ async fn main() -> std::io::Result<()> {
     HttpServer::new( move || {
         App::new()
             .app_data(web_data.clone())
-            .wrap(middleware::Compress::new(ContentEncoding::Br))
             .wrap(middleware::Logger::default())
             .service(web::scope("/").configure(init_routes))
     })
-    .keep_alive(keep_alive)
     // .workers(24)
     .shutdown_timeout(shutdown_timeout)
     // .client_timeout(1000) // 1 second timeout

@@ -3,7 +3,6 @@
 use serde::{Serialize, Deserialize};
 use std::option::Option;
 use std::fmt;
-use serde::export::Formatter;
 use chrono::NaiveDateTime;
 use std::time::{SystemTime, UNIX_EPOCH};
 use std::collections::HashMap;
@@ -268,7 +267,7 @@ impl AuditEventBuilder {
 }
 
 impl fmt::Display for AuditEvent {
-    fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::result::Result<(), std::fmt::Error> { 
         write!(f, "AuditEvent:\n    \
                     uuid: {}\n    \
                     time: {}\n    \

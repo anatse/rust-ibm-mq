@@ -15,3 +15,4 @@ Cargo.lock
 .idea/vcs.xml
 /.idea/
 /release/linux_x64/mq2kafka
+/.vscode/

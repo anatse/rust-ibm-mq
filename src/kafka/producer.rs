@@ -2,8 +2,12 @@
 
 use crate::model::event::AuditEvent;
 use std::vec::Vec;
+use futures::FutureExt;
+use futures::channel::oneshot;
+use rdkafka::error::KafkaError;
+use rdkafka::producer::future_producer::OwnedDeliveryResult;
 use rdkafka::producer::{FutureProducer, FutureRecord, DeliveryFuture};
-use crate::config::config::Config;
+use crate::config::config::{Config, KafkaConfig};
 use rdkafka::ClientConfig;
 use serde_json;
 use std::time::{SystemTime, UNIX_EPOCH, Duration};
@@ -104,14 +108,12 @@ impl KafkaProducer {
     /// # Аргументы
     /// * `_payload` - Строка, которая будет отправлена в кафку
     /// * `_topic` - Топик в который необходимо отправить
-    pub fn send(&self, _payload: &str, _topic: &str) -> DeliveryFuture {
-        self.producer
-            .send(
-                FutureRecord::<(), str>::to(_topic)
-                    .payload(_payload)
-                    .timestamp(millis_to_epoch(SystemTime::now())),
-                0,
-            )
+    pub fn send<'a, 'b>(&'b self, _payload: &'a str, _topic: &'a str) -> DeliveryFuture {
+        let rec = FutureRecord::<(), str>::to(_topic)
+            .payload(_payload)
+            .timestamp(millis_to_epoch(SystemTime::now()));
+
+            self.producer.send_result(rec).unwrap()
     }
 
     /// Отправка события аудита в кафку

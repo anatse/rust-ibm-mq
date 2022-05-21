@@ -2,7 +2,7 @@
 name = "mq2kafka"
 version = "0.1.0"
 authors = ["Anatol Se"]
-edition = "2018"
+edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [profile.release]
@@ -12,7 +12,7 @@ opt-level = 3
 libc = "0"
 quick-xml = "*"
 log = "*"
-env_logger = "0.7"
+env_logger = "*"
 serde = {version = "*", features = ["derive"]}
 serde_derive = "*"
 serde_json = "*"
@@ -21,7 +21,7 @@ chrono = "*"
 rdkafka = { version = "*", features = ["ssl"] }
 actix-web = "*"
 actix-rt = "*"
-uuid = { version = "0.8", features = ["v4"] }
-tokio = {version = "*", features = ["rt-threaded", "macros"] }
+uuid = { version = "*", features = ["v4"] }
+tokio = {version = "*", features = ["rt-threaded", "macros", "time"] }
 futures = "*"
 byteorder = "*"
